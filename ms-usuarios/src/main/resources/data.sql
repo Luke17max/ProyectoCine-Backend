@@ -1,0 +1,2 @@
+INSERT IGNORE INTO usuarios (id, nombre, email, password, rol) VALUES (1, 'Admin Principal', 'admin@cine.com', 'admin123', 'ADMIN');
+INSERT IGNORE INTO usuarios (id, nombre, email, password, rol) VALUES (2, 'Cliente Prueba', 'cliente@correo.com', 'user123', 'CLIENTE');

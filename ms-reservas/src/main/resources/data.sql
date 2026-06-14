@@ -1,0 +1,2 @@
+INSERT IGNORE INTO reservas (id, usuario_id, funcion_id, cantidad_asientos, estado) VALUES (1, 1, 1, 2, 'PENDIENTE');
+INSERT IGNORE INTO reservas (id, usuario_id, funcion_id, cantidad_asientos, estado) VALUES (2, 1, 1, 4, 'PAGADA');

@@ -1,0 +1,2 @@
+INSERT IGNORE INTO pagos (id, reserva_id, monto_total, metodo_pago, estado, fecha_pago) VALUES (1, 1, 15000.00, 'TARJETA_CREDITO', 'COMPLETADO', NOW());
+INSERT IGNORE INTO pagos (id, reserva_id, monto_total, metodo_pago, estado, fecha_pago) VALUES (2, 2, 7500.00, 'EFECTIVO', 'PENDIENTE', NOW());
