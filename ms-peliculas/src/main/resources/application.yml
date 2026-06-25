@@ -1,0 +1,19 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: ms-peliculas
+  datasource:
+    url: jdbc:mysql://localhost:3306/db_peliculas?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC
+    username: root
+    password: 
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  sql:
+    init:
+      mode: always
+  jpa:
+    hibernate:
+      ddl-auto: update
+    defer-datasource-initialization: true
+    show-sql: true

@@ -1,0 +1,70 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          
+      routes:
+        - id: ms-peliculas-route
+          uri: lb://MS-PELICULAS
+          predicates:
+            - Path=/api/peliculas/**
+            
+        - id: ms-sucursales-route
+          uri: lb://MS-SUCURSALES
+          predicates:
+            - Path=/api/sucursales/**
+            
+        - id: ms-confiteria-route
+          uri: lb://MS-CONFITERIA
+          predicates:
+            - Path=/api/confiteria/**
+        
+        - id: ms-funciones-route
+          uri: lb://MS-FUNCIONES
+          predicates:
+            - Path=/api/funciones/**
+
+        - id: ms-reservas-route
+          uri: lb://MS-RESERVAS
+          predicates:
+            - Path=/api/reservas/**
+
+        - id: ms-salas-route
+          uri: lb://MS-SALAS
+          predicates:
+            - Path=/api/salas/**
+
+        - id: ms-usuarios-route
+          uri: lb://MS-USUARIOS
+          predicates:
+            - Path=/api/usuarios/**
+        
+        - id: ms-pago-confiteria-route
+          uri: lb://MS-PAGO-CONFITERIA
+          predicates:
+            - Path=/api/pagos-confiteria/**
+        
+        - id: ms-pago-route
+          uri: lb://MS-PAGOS
+          predicates:
+            - Path=/api/pagos/**
+        
+        - id: ms-notificaciones-route
+          uri: lb://MS-NOTIFICACIONES
+          predicates:
+            - Path=/api/notificaciones/**
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
