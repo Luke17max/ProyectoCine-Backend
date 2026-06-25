@@ -136,8 +136,15 @@ public class UsuarioServiceTest {
 
     @Test
     public void testEliminar_Success() {
+        // ARRANGE: existsById debe retornar true para que el servicio no lance excepción
         Long id = 1L;
+        when(repository.existsById(id)).thenReturn(true);
+
+        // ACT
         service.eliminar(id);
+
+        // ASSERT & VERIFY
+        verify(repository, times(1)).existsById(id);
         verify(repository, times(1)).deleteById(id);
     }
 }
