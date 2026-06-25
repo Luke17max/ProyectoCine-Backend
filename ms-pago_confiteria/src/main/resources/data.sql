@@ -1,2 +1,0 @@
-INSERT IGNORE INTO pagos_confiteria (id, usuario_id, producto_id, cantidad, total_pagado, fecha_compra) VALUES (1, 1, 3, 2, 8500.00, NOW());
-INSERT IGNORE INTO pagos_confiteria (id, usuario_id, producto_id, cantidad, total_pagado, fecha_compra) VALUES (2, 2, 1, 1, 2500.00, NOW());
