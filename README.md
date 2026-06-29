@@ -10,8 +10,8 @@ Sistema modular de gestión de cines desarrollado con **Spring Boot**, **Spring 
 
 | Recurso | Enlace |
 | :--- | :--- |
-| 📦 **Versión Nativa** (.jar + script `.bat`) | [Descargar desde Drive](https://drive.google.com/REEMPLAZAR_ENLACE_NATIVO) |
-| 🐳 **Versión Docker** (`docker-compose.yml`) | [Descargar desde Drive](https://drive.google.com/REEMPLAZAR_ENLACE_DOCKER) |
+| 📦 **Versión Nativa** (.jar + script `.bat`) | [Descargar desde Drive](https://drive.google.com/drive/folders/19zxRYSyvEEUzyS052_lrjyQNPYHC66lp?usp=drive_link) |
+| 🐳 **Versión Docker** (`docker-compose.yml`) | [Descargar desde Drive](https://drive.google.com/drive/folders/1KpTxfz00Ya8yVmxKliQrc1z8RDxyKMga?usp=drive_link) |
 | 🎥 **Video de Defensa** | [Ver en Drive](https://drive.google.com/REEMPLAZAR_ENLACE_VIDEO) |
 
 > 📝 El archivo de subtítulos del video se encuentra en [`docs/subtitulos-video.txt`](./docs/subtitulos-video.txt)
