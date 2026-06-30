@@ -12,7 +12,7 @@ Sistema modular de gestión de cines desarrollado con **Spring Boot**, **Spring 
 | :--- | :--- |
 | 📦 **Versión Nativa** (.jar + script `.bat`) | [Descargar desde Drive](https://drive.google.com/drive/folders/19zxRYSyvEEUzyS052_lrjyQNPYHC66lp?usp=drive_link) |
 | 🐳 **Versión Docker** (`docker-compose.yml`) | [Descargar desde Drive](https://drive.google.com/drive/folders/1KpTxfz00Ya8yVmxKliQrc1z8RDxyKMga?usp=drive_link) |
-| 🎥 **Video de Defensa** | [Ver en Drive](https://drive.google.com/REEMPLAZAR_ENLACE_VIDEO) |
+| 🎥 **Video de Defensa** | [Ver en Drive](https://drive.google.com/drive/folders/1zDwhvDBKvRdxTWZGx8KFyr2f8r7_Bj6K?usp=sharing) |
 
 > 📝 El archivo de subtítulos del video se encuentra en [`docs/subtitulos-video.txt`](./docs/subtitulos-video.txt)
 
@@ -223,7 +223,7 @@ http://localhost:{puerto}/swagger-ui/index.html
 | Campo | Detalle |
 | :--- | :--- |
 | ⏱️ **Duración** | ~15 minutos (máximo 18 minutos) |
-| 🔗 **Enlace** | [Ver Video en Drive](https://drive.google.com/REEMPLAZAR_ENLACE_VIDEO) |
+| 🔗 **Enlace** | [Ver Video en Drive](https://drive.google.com/drive/folders/1zDwhvDBKvRdxTWZGx8KFyr2f8r7_Bj6K?usp=sharing) |
 | 📝 **Subtítulos** | Archivo [`docs/subtitulos-video.txt`](./docs/subtitulos-video.txt) |
 
 ---
