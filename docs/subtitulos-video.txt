@@ -1,0 +1,995 @@
+1
+00:00:00,719 --> 00:00:06,399
+Hola profesor, somos yo, Lucas Guerra y
+
+2
+00:00:03,600 --> 00:00:08,719
+mi compañero Pedro García. En este video
+
+3
+00:00:06,399 --> 00:00:10,880
+le vamos a presentar nuestra evaluación
+
+4
+00:00:08,719 --> 00:00:14,120
+tres, nuestro backend de un sistema de
+
+5
+00:00:10,880 --> 00:00:16,800
+cine. Este ecosistema está diseñado bajo
+
+6
+00:00:14,120 --> 00:00:19,600
+una arquitectura de microservicios con
+
+7
+00:00:16,800 --> 00:00:21,359
+SpringBoot, separando completamente las
+
+8
+00:00:19,600 --> 00:00:24,240
+responsabilidades de negocio en 12
+
+9
+00:00:21,359 --> 00:00:26,560
+módulos independientes. A continuación
+
+10
+00:00:24,240 --> 00:00:29,000
+mostraremos cómo lo construimos y cómo
+
+11
+00:00:26,560 --> 00:00:30,640
+funciona.
+
+12
+00:00:29,000 --> 00:00:33,320
+Para las pruebas en marcha de nuestro
+
+13
+00:00:30,640 --> 00:00:35,320
+entorno local, utilizamos XAMPP para
+
+14
+00:00:33,320 --> 00:00:39,239
+alojar nuestro motor de base de datos
+
+15
+00:00:35,320 --> 00:00:42,800
+MySQL en el puerto 3306.
+
+16
+00:00:39,239 --> 00:00:44,440
+Y para orquestar el encendido de los 12
+
+17
+00:00:42,800 --> 00:00:46,600
+microservicios, sin hacerlo
+
+18
+00:00:44,440 --> 00:00:49,600
+manualmente, desarrollamos un script
+
+19
+00:00:46,600 --> 00:00:49,600
+nativo .bat,
+
+20
+00:00:51,480 --> 00:00:58,480
+que básicamente se encarga de ejecutar
+
+21
+00:00:54,320 --> 00:01:01,680
+los archivos .jar en el orden correcto.
+
+22
+00:00:58,480 --> 00:01:01,680
+Si lo ejecutamos,
+
+23
+00:01:04,479 --> 00:01:09,680
+primero se abre Eureka. ¿Cómo sigue el
+
+24
+00:01:06,320 --> 00:01:12,000
+orden? Aquí hay un timelapse de unos
+
+25
+00:01:09,680 --> 00:01:16,240
+cuantos segundos para que Eureka esté
+
+26
+00:01:12,000 --> 00:01:16,240
+totalmente en línea para luego
+
+27
+00:01:16,360 --> 00:01:23,320
+ejecutar todos los microservicios de
+
+28
+00:01:18,960 --> 00:01:26,200
+negocio de una.
+
+29
+00:01:23,320 --> 00:01:26,200
+Ahí está.
+
+30
+00:01:28,240 --> 00:01:35,720
+También hay hay otro timeelapse.
+
+31
+00:01:31,479 --> 00:01:35,720
+Si lo pillo, dejen ver si lo pillo.
+
+32
+00:01:41,560 --> 00:01:45,719
+Bueno, aquí dice que se están levantando
+
+33
+00:01:43,040 --> 00:01:50,280
+todos los microsercios de negocio y otro
+
+34
+00:01:45,719 --> 00:01:52,640
+timelapse de 20 segundos para
+
+35
+00:01:50,280 --> 00:01:55,000
+que los microservicios de negocio se
+
+36
+00:01:52,640 --> 00:01:57,200
+registren bien
+
+37
+00:01:55,000 --> 00:02:02,360
+en Eureka
+
+38
+00:01:57,200 --> 00:02:02,360
+y para luego finalizar con el API-GATEWAY.
+
+39
+00:02:05,759 --> 00:02:12,119
+Como puede ver, todavía se están
+
+40
+00:02:07,320 --> 00:02:12,119
+ejecutando de uno en uno.
+
+41
+00:02:24,400 --> 00:02:29,480
+También aquí el lanzador nos proporciona
+
+42
+00:02:26,319 --> 00:02:32,680
+un comando que lo vamos a utilizar ya
+
+43
+00:02:29,480 --> 00:02:36,440
+después de hacer las e
+
+44
+00:02:32,680 --> 00:02:41,560
+las pruebas en Postman, que básicamente
+
+45
+00:02:36,440 --> 00:02:45,840
+elimina o mata, como dice acá, eh todos
+
+46
+00:02:41,560 --> 00:02:45,840
+todas estas mini pestañas
+
+47
+00:02:45,959 --> 00:02:51,440
+luego de que todos los servicios estén
+
+48
+00:02:49,159 --> 00:02:53,680
+corriendo simultáneamente,
+
+49
+00:02:51,440 --> 00:02:56,800
+todos con
+
+50
+00:02:53,680 --> 00:02:58,480
+estatus en 200 o 201
+
+51
+00:02:56,800 --> 00:03:01,200
+un creo que era.
+
+52
+00:02:58,480 --> 00:03:05,040
+Bueno, profesor, la columna vertebral de
+
+53
+00:03:01,200 --> 00:03:07,239
+nuestra red son el servidor Eureka y
+
+54
+00:03:05,040 --> 00:03:10,400
+Api Gateway.
+
+55
+00:03:07,239 --> 00:03:13,040
+Aquí vemos el dashboard de Eureka
+
+56
+00:03:10,400 --> 00:03:15,360
+notando que nuestros microservicios se
+
+57
+00:03:13,040 --> 00:03:18,080
+han registrado exitosamente.
+
+58
+00:03:15,360 --> 00:03:22,640
+Esto permite la comunicación mediante
+
+59
+00:03:18,080 --> 00:03:24,640
+los nombres lógicos y no por IP físicas.
+
+60
+00:03:22,640 --> 00:03:27,400
+Además, protegemos el sistema con
+
+61
+00:03:24,640 --> 00:03:30,760
+nuestro APi Gateway
+
+62
+00:03:27,400 --> 00:03:33,120
+eh dentro de el puerto 8080, como se
+
+63
+00:03:30,760 --> 00:03:35,519
+puede ver aquí.
+
+64
+00:03:33,120 --> 00:03:38,200
+Eh, directamente
+
+65
+00:03:35,519 --> 00:03:40,680
+nadie accede a los microservicios de
+
+66
+00:03:38,200 --> 00:03:44,680
+pagos o reserva
+
+67
+00:03:40,680 --> 00:03:47,680
+y el gateway enruta el tráfico de manera
+
+68
+00:03:44,680 --> 00:03:47,680
+centralizada.
+
+69
+00:03:51,120 --> 00:03:55,640
+Van a salir todos los microservicios
+
+70
+00:03:53,040 --> 00:03:58,000
+registrados.
+
+71
+00:03:55,640 --> 00:04:00,000
+Bueno, profesor, ahora aquí destacamos
+
+72
+00:03:58,000 --> 00:04:03,959
+los microservicios principales que
+
+73
+00:04:00,000 --> 00:04:06,840
+sostienen la lógica central del proyecto
+
+74
+00:04:03,959 --> 00:04:10,720
+con MS películas,
+
+75
+00:04:06,840 --> 00:04:14,319
+el cual eh se encarga exclusivamente del
+
+76
+00:04:10,720 --> 00:04:17,680
+catálogo de entretenimiento registrando
+
+77
+00:04:14,319 --> 00:04:21,479
+títulos, sinopsis, género y duración. no
+
+78
+00:04:17,680 --> 00:04:24,440
+le importa qué cine se proyecte o y solo
+
+79
+00:04:21,479 --> 00:04:30,120
+gestiona el contenido multimedia. Y por
+
+80
+00:04:24,440 --> 00:04:32,919
+otro lado tenemos MS Sala, el cual
+
+81
+00:04:30,120 --> 00:04:35,840
+modela el espacio físico,
+
+82
+00:04:32,919 --> 00:04:40,960
+controla las sucursales, el tipo de
+
+83
+00:04:35,840 --> 00:04:44,199
+sala, si será 2D, 3D, IMAX y lo más
+
+84
+00:04:40,960 --> 00:04:47,680
+importante, la distribución
+
+85
+00:04:44,199 --> 00:04:52,120
+y capacidad de los asientos.
+
+86
+00:04:47,680 --> 00:04:55,400
+Luego pasando con ms funciones,
+
+87
+00:04:52,120 --> 00:04:55,400
+el cual
+
+88
+00:04:58,919 --> 00:05:04,759
+el cual se cruza con películas y salas
+
+89
+00:05:01,320 --> 00:05:07,280
+para asignar horarios.
+
+90
+00:05:04,759 --> 00:05:10,720
+Y cuando creamos una función, este
+
+91
+00:05:07,280 --> 00:05:14,720
+microservicio toma el ID de una
+
+92
+00:05:10,720 --> 00:05:18,039
+película, luego toma el ID de la sala y
+
+93
+00:05:14,720 --> 00:05:20,680
+les asigna una fecha y horario
+
+94
+00:05:18,039 --> 00:05:24,000
+específico.
+
+95
+00:05:20,680 --> 00:05:27,000
+Luego con MS reservas pasamos a MS
+
+96
+00:05:24,000 --> 00:05:27,000
+Reservas.
+
+97
+00:05:27,240 --> 00:05:31,160
+Aquí está MS Reservas.
+
+98
+00:05:34,400 --> 00:05:39,039
+el cual, bueno,
+
+99
+00:05:36,479 --> 00:05:41,440
+es el núcleo transaccional de las
+
+100
+00:05:39,039 --> 00:05:45,080
+compras de asientos. Este microservicio
+
+101
+00:05:41,440 --> 00:05:46,840
+gestiona el estado de
+
+102
+00:05:45,080 --> 00:05:49,639
+a tiempo real, los a tiempo real, los
+
+103
+00:05:46,840 --> 00:05:52,400
+asientos a tiempo real, si están por ser
+
+104
+00:05:49,639 --> 00:05:55,319
+comprados o si ya fueron comprados.
+
+105
+00:05:52,400 --> 00:05:57,600
+Bueno, este cuando uno selecciona un
+
+106
+00:05:55,319 --> 00:06:00,880
+lugar pues
+
+107
+00:05:57,600 --> 00:06:04,160
+MS Reservas crea la transacción
+
+108
+00:06:00,880 --> 00:06:07,800
+y le asigna como pendiente, ya que no
+
+109
+00:06:04,160 --> 00:06:09,680
+está asegurado que la compra está
+
+110
+00:06:07,800 --> 00:06:11,840
+está hecha.
+
+111
+00:06:09,680 --> 00:06:13,800
+Con todo esto para evitar que personas
+
+112
+00:06:11,840 --> 00:06:19,280
+compren al mismo tiempo el mismo
+
+113
+00:06:13,800 --> 00:06:19,280
+asiento. Y luego pasamos con MS Pagos.
+
+114
+00:06:22,440 --> 00:06:25,840
+ms pagos,
+
+115
+00:06:26,400 --> 00:06:32,840
+el cual bueno, eh valida las
+
+116
+00:06:29,840 --> 00:06:34,560
+transacciones antes de confirmar la
+
+117
+00:06:32,840 --> 00:06:37,319
+reserva
+
+118
+00:06:34,560 --> 00:06:41,759
+de forma así definitiva. Este es el que
+
+119
+00:06:37,319 --> 00:06:45,639
+ve si uno pagó o no pagó, básicamente.
+
+120
+00:06:41,759 --> 00:06:48,240
+Eh, si el pago es exitoso, pues MS pagos
+
+121
+00:06:45,639 --> 00:06:51,919
+eh emite la confirmación hacia MS
+
+122
+00:06:48,240 --> 00:06:54,560
+Reservas. IMS reservas al recibir esta
+
+123
+00:06:51,919 --> 00:06:58,080
+confirmación, pues cambia inmediatamente
+
+124
+00:06:54,560 --> 00:07:00,840
+el estado de reserva pendiente a reserva
+
+125
+00:06:58,080 --> 00:07:04,080
+confirmada, consolidando la compra de
+
+126
+00:07:00,840 --> 00:07:06,400
+los asientos de forma definitiva.
+
+127
+00:07:04,080 --> 00:07:09,680
+Esos serían nuestros
+
+128
+00:07:06,400 --> 00:07:12,000
+microservicios principales que sostienen
+
+129
+00:07:09,680 --> 00:07:14,000
+este proyecto.
+
+130
+00:07:12,000 --> 00:07:16,599
+Ahora vamos a probar el sistema en
+
+131
+00:07:14,000 --> 00:07:19,280
+Postman. Vamos a hacer un get para
+
+132
+00:07:16,599 --> 00:07:21,319
+listar todas las funciones,
+
+133
+00:07:19,280 --> 00:07:23,599
+obviamente en el puerto 8080. Y como
+
+134
+00:07:21,319 --> 00:07:26,560
+puede ver
+
+135
+00:07:23,599 --> 00:07:30,599
+aparecen todas. También vamos a hacer un
+
+136
+00:07:26,560 --> 00:07:32,599
+post, de hecho lo tengo aquí, un post en
+
+137
+00:07:30,599 --> 00:07:34,280
+reservas.
+
+138
+00:07:32,599 --> 00:07:36,039
+Tengo incluso el Jason para ahorrar
+
+139
+00:07:34,280 --> 00:07:39,879
+tiempo
+
+140
+00:07:36,039 --> 00:07:41,319
+y si le mandamos a Send, obviamente
+
+141
+00:07:39,879 --> 00:07:43,639
+reservas depende del usuario y de la
+
+142
+00:07:41,319 --> 00:07:46,720
+función, así como
+
+143
+00:07:43,639 --> 00:07:49,479
+reservas. No, funciones, perdón, depende
+
+144
+00:07:46,720 --> 00:07:52,520
+de la película y de la sala. Esto
+
+145
+00:07:49,479 --> 00:07:54,919
+comprueba eh
+
+146
+00:07:52,520 --> 00:07:58,479
+que los microservicios se comunican
+
+147
+00:07:54,919 --> 00:08:01,479
+correctamente entre sí. Si hacemos el
+
+148
+00:07:58,479 --> 00:08:01,479
+post
+
+149
+00:08:07,960 --> 00:08:12,520
+y queda pendiente. Si hacemos un get
+
+150
+00:08:13,199 --> 00:08:16,000
+aparece aquí.
+
+151
+00:08:16,479 --> 00:08:21,800
+E también funciona el delete. Queremos
+
+152
+00:08:19,520 --> 00:08:25,919
+eliminar
+
+153
+00:08:21,800 --> 00:08:30,319
+una reserva con el ID6, el que el que
+
+154
+00:08:25,919 --> 00:08:34,240
+acabamos de crear lo borra.
+
+155
+00:08:30,319 --> 00:08:37,640
+E si queremos probar alguna validación,
+
+156
+00:08:34,240 --> 00:08:40,959
+por ejemplo, una película con ID9 que no
+
+157
+00:08:37,640 --> 00:08:40,959
+existe, básicamente.
+
+158
+00:08:43,159 --> 00:08:50,760
+A ver su mensaje de película no
+
+159
+00:08:44,560 --> 00:08:50,760
+encontrada y lanza un 404 not found.
+
+160
+00:08:51,120 --> 00:08:56,000
+Ahora vamos a pasar al al tema de las
+
+161
+00:08:53,839 --> 00:08:59,600
+pruebas unitarias, pero primero quiero
+
+162
+00:08:56,000 --> 00:09:03,000
+demostrarle que este comando funciona.
+
+163
+00:08:59,600 --> 00:09:07,399
+Si abro un CMD en cualquier parte de mi
+
+164
+00:09:03,000 --> 00:09:07,399
+computadora y lo ejecuto,
+
+165
+00:09:07,480 --> 00:09:14,959
+se terminan todos los procesos,
+
+166
+00:09:11,440 --> 00:09:16,200
+todos los servicios de la gateway, el y
+
+167
+00:09:14,959 --> 00:09:18,560
+los microservicios de negocio se
+
+168
+00:09:16,200 --> 00:09:22,480
+terminan y este se cierra solo si
+
+169
+00:09:18,560 --> 00:09:22,480
+aprieto una tecla para continuar.
+
+170
+00:09:23,120 --> 00:09:26,360
+Y ahora entramos en la sección de las
+
+171
+00:09:24,440 --> 00:09:28,880
+pruebas unitarias.
+
+172
+00:09:26,360 --> 00:09:30,720
+Implementamos pruebas unitarias usando
+
+173
+00:09:28,880 --> 00:09:33,760
+JUnit. y mockito para asegurar la
+
+174
+00:09:30,720 --> 00:09:35,200
+calidad. Moquerizamos, por así decirlo,
+
+175
+00:09:33,760 --> 00:09:37,519
+las dependencias para probar los
+
+176
+00:09:35,200 --> 00:09:39,120
+controladores y servicios de forma
+
+177
+00:09:37,519 --> 00:09:41,200
+aislada.
+
+178
+00:09:39,120 --> 00:09:44,200
+Aquí ejecuté un comando que es maven
+
+179
+00:09:41,200 --> 00:09:48,399
+test
+
+180
+00:09:44,200 --> 00:09:52,240
+y hay que esperar un poco
+
+181
+00:09:48,399 --> 00:09:52,240
+si es que no se me pega.
+
+182
+00:09:58,600 --> 00:10:04,079
+lo que hace es compilar todos los test
+
+183
+00:10:00,640 --> 00:10:08,440
+que hicimos en cada
+
+184
+00:10:04,079 --> 00:10:10,880
+control service de cada microservicio
+
+185
+00:10:08,440 --> 00:10:13,839
+y
+
+186
+00:10:10,880 --> 00:10:17,720
+nos va a informar si existe algún error,
+
+187
+00:10:13,839 --> 00:10:21,800
+si no e va a salir todo en verde cuando
+
+188
+00:10:17,720 --> 00:10:21,800
+finalice todo este comando.
+
+189
+00:10:39,000 --> 00:10:42,000
+13.
+
+190
+00:10:48,120 --> 00:10:52,959
+Bueno, tuve que pausar el video un poco
+
+191
+00:10:50,160 --> 00:10:55,120
+porque se estaba demorando demasiado y
+
+192
+00:10:52,959 --> 00:10:56,880
+como puede ver
+
+193
+00:10:55,120 --> 00:10:59,320
+están
+
+194
+00:10:56,880 --> 00:11:02,160
+todos los servicios
+
+195
+00:10:59,320 --> 00:11:06,160
+construidos correctamente.
+
+196
+00:11:02,160 --> 00:11:08,440
+Bueno, como aporte técnico dentro de
+
+197
+00:11:06,160 --> 00:11:12,200
+este avance
+
+198
+00:11:08,440 --> 00:11:14,240
+eh hice la creación de los test
+
+199
+00:11:12,200 --> 00:11:18,519
+confitería,
+
+200
+00:11:14,240 --> 00:11:22,160
+MS funciones, MS notificaciones, MS pago
+
+201
+00:11:18,519 --> 00:11:25,639
+y MS pago confitería, tanto como los T
+
+202
+00:11:22,160 --> 00:11:31,720
+Service como los T controller.
+
+203
+00:11:25,639 --> 00:11:34,240
+Este es el comit que envié al GitHub.
+
+204
+00:11:31,720 --> 00:11:40,959
+con todos los cambios que se hicieron
+
+205
+00:11:34,240 --> 00:11:45,839
+dentro de cada MS, cada microservicio. Y
+
+206
+00:11:40,959 --> 00:11:45,839
+este serían como los diversos cambios.
+
+207
+00:11:47,200 --> 00:11:52,680
+Ahí hay un poco de la creación de los
+
+208
+00:11:50,720 --> 00:11:56,000
+em
+
+209
+00:11:52,680 --> 00:11:56,000
+los test,
+
+210
+00:11:56,920 --> 00:12:05,200
+por ejemplo, este.
+
+211
+00:12:00,360 --> 00:12:07,240
+Y bueno, ese fue mi aporte dentro de
+
+212
+00:12:05,200 --> 00:12:10,760
+este avance.
+
+213
+00:12:07,240 --> 00:12:13,680
+Mi usuario es Luke 17 Max para evitar
+
+214
+00:12:10,760 --> 00:12:15,720
+confusiones en la defensa
+
+215
+00:12:13,680 --> 00:12:17,959
+técnica.
+
+216
+00:12:15,720 --> 00:12:22,120
+Eh, por mi parte me enfoqué en crear los
+
+217
+00:12:17,959 --> 00:12:24,360
+test eh de service y controller de cinco
+
+218
+00:12:22,120 --> 00:12:29,120
+microservicios.
+
+219
+00:12:24,360 --> 00:12:31,720
+Mc usuarios, MS películas, MS salas, MS
+
+220
+00:12:29,120 --> 00:12:34,240
+sucursales y aquí me falta agregar MS
+
+221
+00:12:31,720 --> 00:12:36,519
+reservas.
+
+222
+00:12:34,240 --> 00:12:38,720
+E también desarrollé la parte nativa del
+
+223
+00:12:36,519 --> 00:12:43,800
+proyecto juntando los archivos .jar
+
+224
+00:12:38,720 --> 00:12:47,279
+ en la carpeta apps y el archivo .bat
+
+225
+00:12:43,800 --> 00:12:49,880
+que es este comit que está aquí.
+
+226
+00:12:47,279 --> 00:12:52,920
+E
+
+227
+00:12:49,880 --> 00:12:54,880
+también unifiqué
+
+228
+00:12:52,920 --> 00:12:57,639
+la base de datos de cada microservicio
+
+229
+00:12:54,880 --> 00:13:02,199
+en la carpeta docs.
+
+230
+00:12:57,639 --> 00:13:04,440
+Y también para finalizar, yo refactoricé
+
+231
+00:13:02,199 --> 00:13:08,240
+el proyecto inicial en una arquitectura
+
+232
+00:13:04,440 --> 00:13:08,240
+maven multimódulo.
+
+233
+00:13:09,040 --> 00:13:13,600
+Y bueno, algo muy mínimo que es cambiar
+
+234
+00:13:11,519 --> 00:13:15,920
+el link de los drives del proyecto
+
+235
+00:13:13,600 --> 00:13:20,079
+conindo también. No olvidé mencionar
+
+236
+00:13:15,920 --> 00:13:22,680
+eso, que también tenemos nuestro Docker,
+
+237
+00:13:20,079 --> 00:13:25,680
+pero
+
+238
+00:13:22,680 --> 00:13:28,560
+el la aplicación del Docker en sí se
+
+239
+00:13:25,680 --> 00:13:32,240
+demoraba demasiado en
+
+240
+00:13:28,560 --> 00:13:35,199
+en en iniciar el motor. Entonces,
+
+241
+00:13:32,240 --> 00:13:37,120
+tuvimos que hacerlo como como
+
+242
+00:13:35,199 --> 00:13:39,519
+el sistema nativo solamente, pero para
+
+243
+00:13:37,120 --> 00:13:42,480
+que lo tengan en cuenta, tenemos
+
+244
+00:13:39,519 --> 00:13:44,760
+avanzadísimo el el Docker. Lo que sí es
+
+245
+00:13:42,480 --> 00:13:47,160
+que no lo hemos testeado, pero hay
+
+246
+00:13:44,760 --> 00:13:51,480
+tiempo para eso.
+
+247
+00:13:47,160 --> 00:13:51,480
+Y eso es todo, profesor.
+
+248
+00:13:52,199 --> 00:13:55,399
+Nos vemos.
+
+249
+00:13:55,959 --> 00:13:58,360
+Chau.
